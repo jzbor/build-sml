@@ -34,9 +34,9 @@ fun listSMLFiles path = List.filter (String.isSuffix ".sml") (listFiles path);
 val parent = let
   val full = (OS.FileSys.fullPath (CommandLine.name ()));
   val components = String.tokens (fn c => c = #"/") full;
-  val parentComponents = List.take (components, List.length components - 1);
+  val parentComponents = List.take (components, length components - 1);
 in
-  List.foldr (fn (comp, path) => path ^ "/" ^ comp) "/" parentComponents
+  foldr (fn (comp, path) => path ^ "/" ^ comp) "/" parentComponents
 end;
 
 app use (listSMLFiles sourceDirectory)
